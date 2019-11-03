@@ -47,9 +47,8 @@ Se pueden visualizar en la siguiente figura las funciones:
 | Board_LED_Set(LED3, LED_ON);| enciende le led 3   |
 |  DEBUGOUT(pcTaskName);  | muestra por el usart el mensaje  guardado en pcTaskName |
 |  prvSetupHardware();  | setea las variables del sistema   |
-|  xTaskCreate(vTask2, (char *) "Task2", configMINIMAL_STACK_SIZE,
-				NULL, (tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);|crea la tarea 2 |
-| vTaskStartScheduler(); | activa el manejador de tareas   |
+|  xTaskCreate(vTask2, (char *) "Task2", configMINIMAL_STACK_SIZE,NULL, (tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);|crea la tarea2|
+| vTaskStartScheduler(); | activa el manejador de tareas |
 
 
 ![funciones1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/funciones1.png)
