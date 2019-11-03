@@ -44,18 +44,13 @@ Se pueden visualizar en la siguiente figura las funciones:
 
 | Nombre | Descripción |
 | ------ | ----------- |
-|  boardConfig(); | configura los pines de entrada y salida    |
-|  tickConfig( TICKRATE_MS );  | configurar la frecuencia de la interrupciones    |
-|  tickCallbackSet( myTickHook, (void*)NULL );  | configura la funcion que se ejecutara con cada interrupcion    |
-|  InitTimerTicks(ticks, NOF_TIMERS); | incializa la frecuencia del timer   |
-|  prefix_init(&statechart);  | inicializa la maquina de estados    |
-|  prefix_enter(&statechart);   |  cambia el estado de la maquina de estados   |
-|  UpdateTimers(ticks, NOF_TIMERS);  | actualiza la frecuencia del timer    |
-|  prefixIface_raise_evTick(&statechart);| activa el evento etick |
-|  IsPendEvent(ticks, NOF_TIMERS, ticks[i].evid)       | devuelve true si se cumplio el tiempo de eventos dado por NOF_TIMERS|
-|  prefix_raiseTimeEvent(&statechart, ticks[i].evid);   |  activa el evento etick   |
-|  MarkAsAttEvent(ticks, NOF_TIMERS, ticks[i].evid);   |  setea el evento pendiente en false  |
-|  prefix_runCycle(&statechart);   | cambia el estado de la maquina de estados  |
+| Board_LED_Set(LED3, LED_ON);| enciende le led 3   |
+|  DEBUGOUT(pcTaskName);  | muestra por el usart el mensaje  guardado en pcTaskName |
+|  prvSetupHardware();  | setea las variables del sistema   |
+|  xTaskCreate(vTask2, (char *) "Task2", configMINIMAL_STACK_SIZE,
+				NULL, (tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);|crea la tarea 2 |
+| vTaskStartScheduler(); | activa el manejador de tareas   |
+
 
 ![funciones1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/funciones1.png)
 ![funciones2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/funciones2.png)
@@ -64,10 +59,13 @@ Se pueden visualizar en la siguiente figura las constantes:
 
 | Nombre | Descripción |
 | ------ | ----------- |
-|  TICKRATE_MS   |  setea la frecuencia de interrupciones   |
-|  USE_TIME_EVENTS  | flag utilizado para decididir si se ejecutan eventos por tiempo o no    |
-|  NOF_TIMERS  |  constante utilizada para definir el tiempo de cada evento  |
-|  SysTick_Time_Flag  |  flag utilizado para saber si se produjo una interrupcion  |
+| LED3   |  constante que indica la posicion fisica dl pin del led 3  |
+|  LED_ON  | constante que indica el estado encendido de un led   |
+|  *pcTaskName   |  cadena de texto usada para guardar el nombre de la tarea  |
+|  ul |  variable de iteracion volatile  |
+|  mainDELAY_LOOP_COUNT |  constante utilizada para indicar el maximo de delay de la tarea  |
+|  configMINIMAL_STACK_SIZE |  constante que indica el minimo de espacion en memoria de stack  |
+| tskIDLE_PRIORITY + 1UL|  constante que indica la prioridad de la tarea  |
 
 
 ![constantes1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/constantes2.png)
@@ -83,9 +81,6 @@ Se pueden visualizar en la siguiente figura las constantes:
 Archivo config.h
 ![Imagen 01_configh.png](https://raw.githubusercontent.com/DarioCapu/workspace-EDU_CIAA_NXP_TP3/master/Imagenes/01_configh.png)
 Configurando el debug
-![Imagen 02_debug.png](https://raw.githubusercontent.com/DarioCapu/workspace-EDU_CIAA_NXP_TP3/master/Imagenes/02_debug.png)
-Corriendo el ejemplo 1
-![Imagen 03_example1_debug.png](https://raw.githubusercontent.com/DarioCapu/workspace-EDU_CIAA_NXP_TP3/master/Imagenes/03_example1_debug.png)
 
 ## Example 2
 
