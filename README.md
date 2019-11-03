@@ -75,45 +75,75 @@ Se pueden visualizar en la siguiente figura las constantes:
 # 2 free rtos examples 1 a 9
 
 
-## Example 1
+## Example 1 Creating tasks
 
-Archivo config.h
-![Imagen 01_configh.png](https://raw.githubusercontent.com/DarioCapu/workspace-EDU_CIAA_NXP_TP3/master/Imagenes/01_configh.png)
-Configurando el debug
+En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
+Interrupciones:
 
-## Example 2
+Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
 
-## Example 3
+![Imagen 01_configh.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/01_configh.png)
 
-## Example 4
+Modificando el valor de este parametro para los diferentes casos (1000mS/100mS/10mS/1mS) se obtuvo que cuanto menor sea este valor las tareas manejadas por el Scheduler iran iterando cada vez mas rapido debido a que tienen la misma prioridad.
+Este parametro permite que las tareas programadas terminen en su totalidad si estas son de menor tiempo que este parametro.
 
-## Example 5
+## Example 2 Using the task parameter
 
-## Example 6
+En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
+Interrupciones:
 
-## Example 7
+Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
 
-## Example 8
 
-## Example 9
+Se puede observar que 
+
+## Example 3 Experimenting with priorities
+
+## Example 4 Using the Blocked state to create delay
+
+## Example 5 Converting the example tasks to use vTaskDelayUntil
+
+## Example 6 Combining blocking and non-blocking tasks
+
+## Example 7 Defining an idle task hook function
+
+## Example 8 Changing task priorities
+
+## Example 9 Deleting tasks
 
 
 # 3 free rtos examples 10 a 16
 
 
-## Example 10
+## Example 10 Blocking when receiving from a queue
 
-## Example 11
+En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
+Interrupciones:
 
-## Example 12
+Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
 
-## Example 13
 
-## Example 14
+Se puede observar que 
 
-## Example 15
+## Example 11 Blocking when sending to a queue or sending structures on a queue 
 
-## Example 16
+En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
+Interrupciones:
+
+Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
+
+
+Se puede observar que 
+
+## Example 12 Using a binary semaphore to synchronize a task with an interrupt 
+
+## Example 13 Using a counting semaphore to synchronize a task with an interrupt 
+
+## Example 14 Sending and receiving on a queue from within an interrupt 
+
+## Example 15 Re-writing vPrintString() to use a semaphore
+
+## Example 16 Re-writing vPrintString() to use a gatekeeper task
 
 
 # 4 Implementacion 1
