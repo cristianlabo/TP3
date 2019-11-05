@@ -95,10 +95,12 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
+Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se mostro en ejemplo anterior.
+La diferencia primordial respecto del ejemplo anterior es que las tareas estan creadas con parametros distintos.
+En este caso la funcion toggle permite que cambie de estado el led provocando que se visualice un parpadeo intermitente cuanto mayor sea la frecuencia de interrupcion de cada tarea.
+Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms).:
 
-
-Se puede observar que 
+![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
 
 ## Example 3 Experimenting with priorities
 
