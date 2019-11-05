@@ -86,6 +86,9 @@ Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/Fr
 
 Modificando el valor de este parametro para los diferentes casos (1000mS/100mS/10mS/1mS) se obtuvo que cuanto menor sea este valor las tareas manejadas por el Scheduler iran iterando cada vez mas rapido debido a que tienen la misma prioridad.
 Este parametro permite que las tareas programadas terminen en su totalidad si estas son de menor tiempo que este parametro.
+Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
+
+![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
 
 ## Example 2 Using the task parameter
 
@@ -123,7 +126,9 @@ Interrupciones:
 Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
 
 
-Se puede observar que 
+Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
+
+![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
 
 ## Example 11 Blocking when sending to a queue or sending structures on a queue 
 
