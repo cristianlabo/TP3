@@ -80,6 +80,8 @@ Se pueden visualizar en la siguiente figura las constantes:
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
+![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+
 Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se puede ver en la figura:
 
 ![Imagen 01_configh.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/01_configh.png)
@@ -94,6 +96,8 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
+
+![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
 
 Se puede  configurar el time slice desde freertos_examples_1_to_9/example/inc/FreeRTOSConfig.h como se mostro en ejemplo anterior.
 La diferencia primordial respecto del ejemplo anterior es que las tareas estan creadas con parametros distintos.
