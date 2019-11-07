@@ -129,24 +129,24 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+![task10.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task10.png)
 
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+![tarea10.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/tarea10.png)
 
 ## Example 11 Blocking when sending to a queue or sending structures on a queue 
 
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+![task11.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task11.png)
 
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+![tarea11.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/tarea11.png)
 
 ## Example 12 Using a binary semaphore to synchronize a task with an interrupt 
 
