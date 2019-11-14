@@ -23,7 +23,7 @@ C_DEPS += \
 example/src/%.o: ../example/src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU C Compiler'
-	arm-none-eabi-gcc -D__MULTICORE_NONE -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -D__REDLIB__ -DCORE_M4 -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-EDU_CIAA_NXP-TP3\lpc_chip_43xx\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-EDU_CIAA_NXP-TP3\lpc_board_nxp_lpcxpresso_4337\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-EDU_CIAA_NXP-TP3\freertos_examples_1_to_9\example\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-EDU_CIAA_NXP-TP3\freertos_examples_1_to_9\freertos\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fsingle-precision-constant -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	arm-none-eabi-gcc -D__MULTICORE_NONE -DDEBUG -D__CODE_RED -D__USE_LPCOPEN -D__REDLIB__ -DCORE_M4 -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-TP3\lpc_chip_43xx\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-TP3\lpc_board_nxp_lpcxpresso_4337\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-TP3\freertos_examples_1_to_9\example\inc" -I"C:\Users\cmg-8\Documents\LPCXpresso_8.2.0_647\workspace-TP3\freertos_examples_1_to_9\freertos\inc" -O0 -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fsingle-precision-constant -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

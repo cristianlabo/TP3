@@ -49,7 +49,7 @@
 #define EXAMPLE_8 (8)		/* Changing task priorities */
 #define EXAMPLE_9 (9)		/* Deleting tasks */
 
-#define TEST (EXAMPLE_1)
+#define TEST (EXAMPLE_9)
 
 /*****************************************************************************
  * Public types/enumerations/variables
@@ -103,8 +103,6 @@ static void vTask1(void *pvParameters)
 		}
 	}
 }
-
-
 /* UART (or output) & LED OFF thread */
 static void vTask2(void *pvParameters)
 {
@@ -760,6 +758,7 @@ static void vTask1(void *pvParameters)
 		 * priority of the    two created tasks). */
 		DEBUGOUT("About to raise the Task2 priority\r\n");
 		vTaskPrioritySet(xTask2Handle, (uxPriority + 1));
+
 
 		/* Task1 will only run when it has a priority higher than Task2.
 		 * Therefore, for this task to reach this point Task2 must already have
