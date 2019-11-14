@@ -1,4 +1,4 @@
-08:26:38 **** Build of configuration Debug for project lpc_board_nxp_lpcxpresso_4337 ****
+20:02:49 **** Build of configuration Debug for project lpc_board_nxp_lpcxpresso_4337 ****
 make -r all 
 Building file: ../src/board.c
 Invoking: MCU C Compiler
@@ -42,5 +42,5 @@ arm-none-eabi-size "liblpc_board_nxp_lpcxpresso_4337.a" ; # arm-none-eabi-objdum
     796	      0	      0	    796	    31c	wm8904.o (ex liblpc_board_nxp_lpcxpresso_4337.a)
  
 
-08:26:40 Build Finished (took 2s.278ms)
+20:02:51 Build Finished (took 1s.916ms)
 

@@ -1422,7 +1422,7 @@ int main(void)
 
 #if (TEST == IMPLEMENTACION_2)		/* Using a binary semaphore to synchronize a task with an interrupt */
 
-const char *pcTextForMain = "\r\nIMPLEMENTACION 2 \r\n";
+const char *pcTextForMain = "\r\nIMPLEMENTACION 1 \r\n";
 
 /* The interrupt number to use for the software interrupt generation.  This
  * could be any unused number.  In this case the first chip level (non system)
@@ -1477,6 +1477,9 @@ static void vTAREA3(void *pvParameters)
 	xSemaphoreTake(xBinarySemaphore, (portTickType) 0);
 
 	while (1) {
+
+
+
 
 
         Board_LED_Set(LED3, LED_OFF);

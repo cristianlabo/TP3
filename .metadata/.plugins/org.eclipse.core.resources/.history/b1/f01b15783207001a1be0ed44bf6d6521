@@ -1422,7 +1422,7 @@ int main(void)
 
 #if (TEST == IMPLEMENTACION_2)		/* Using a binary semaphore to synchronize a task with an interrupt */
 
-const char *pcTextForMain = "\r\nIMPLEMENTACION 2 \r\n";
+const char *pcTextForMain = "\r\nIMPLEMENTACION 1 \r\n";
 
 /* The interrupt number to use for the software interrupt generation.  This
  * could be any unused number.  In this case the first chip level (non system)
@@ -1472,12 +1472,16 @@ xQueueHandle xQueue;
 static void vTAREA3(void *pvParameters)
 {
 	DEBUGOUT("TAREA 3\r\n");
-
+    long lValueToSend;
+	lValueToSend = (long) pvParameters;
 
 	xSemaphoreTake(xBinarySemaphore, (portTickType) 0);
 
 	while (1) {
 
+
+
+		DEBUGOUT("ENVIA = %d\r\n", lValueToSend);
 
         Board_LED_Set(LED3, LED_OFF);
 
@@ -1508,8 +1512,6 @@ static void vTAREA2(void *pvParameters)
 			DEBUGOUT("RECIVE = %d\r\n", lReceivedValue);
 
 		}
-
-		DEBUGOUT("ENTREGA EL SEMAFORO \r\n");
 
 		xSemaphoreGive(xBinarySemaphore);
 
@@ -1562,8 +1564,6 @@ void vSoftwareInterruptHandler(void)
 
 	xQueueSendToBackFromISR(xQueue, &ulReceivedNumber, &xHigherPriorityTaskWoken);
 
-	DEBUGOUT("ENVIA = %d\r\n", ulReceivedNumber);
-
     mainCLEAR_INTERRUPT();
 
     portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
@@ -1606,7 +1606,7 @@ int main(void)
          * priority of 3 is chosen. */
     	DEBUGOUT("CREA TAREA 2 \r\n");
 
-        xTaskCreate(vTAREA2, (char *) "TAREA2", configMINIMAL_STACK_SIZE, NULL,
+        xTaskCreate(vTAREA2, (char *) "TAREA2", configMINIMAL_STACK_SIZE, (void *) 100,
         			(tskIDLE_PRIORITY + 3UL), (xTaskHandle *) NULL);
 
         DEBUGOUT("CREA TAREA 3 \r\n");
