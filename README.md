@@ -141,13 +141,28 @@ Interrupciones:
 
 ![grafico_implementacion1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion1.png)
 
-Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
+Se puede observar que la tarea 2 (prioridad 3) carga un dato en la cola y toma el semaforo para bloquearse,luego toma el control del cpu la tarea 3(prioridad 2) la cual saca el dato de la cola y se bloquea cuando vacia la cola, despues toma el control de la cpu la tarea 1(prioridad 1) la cual espera un delay bloqueada y genera una interrupcion que libera el semaforo para que tome el control la tarea 2 y repetir el ciclo.
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+El codigo main de la implemetacion se puede ver en la siguiente figura:
 
-El codigo de la implemetacion se puede ver en la siguiente figura:
+![main_implementacion1_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion1_1.png)
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+![main_implementacion1_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion1_2.png)
+
+Las funciones y tareas utilizadas son las siguientes:
+
+![definicion_funciones_implementacion1_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion1_1.png)
+
+![definicion_funciones_implementacion1_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion1_2.png)
+
+![definicion_funciones_implementacion1_3.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion1_3.png)
+
+![definicion_funciones_implementacion1_4.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion1_4.png)
+
+
+En la implemetancion se generaron mensajes de salida por el usart los cuales dieron el siguiente resultado:
+
+![salida_puerto_serie_implementacion_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/salida_puerto_serie_implementacion_1.png)
 
 
 # 5 Implementacion 2
@@ -157,13 +172,28 @@ Interrupciones:
 
 ![grafico_implementacion2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion2.png)
 
-Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
+Se puede observar que la tarea 2 (prioridad 3) saca un dato en la cola,se bloquea si esta vacia y entrega el semaforo,luego toma el control del cpu la tarea 3(prioridad 2) toma el semaforo y se bloquea, despues toma el control de la cpu la tarea 1(prioridad 1) la cual espera un delay bloqueada y genera una interrupcion que carga un dato en la cola y se repite el ciclo.
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+El codigo del main de la implemetacion se puede ver en la siguiente figura:
 
-El codigo de la implemetacion se puede ver en la siguiente figura:
+![main_implementacion2_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion2_1.png)
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+![main_implementacion2_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion2_2.png)
+
+Las funciones y tareas utilizadas son las siguientes:
+
+![definicion_funciones_implementacion2_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_1.png)
+
+![definicion_funciones_implementacion2_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_2.png)
+
+![definicion_funciones_implementacion2_3.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_3.png)
+
+![definicion_funciones_implementacion2_4.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_4.png)
+
+
+En la implemetancion se generaron mensajes de salida por el usart los cuales dieron el siguiente resultado:
+
+![salida_puerto_serie_implementacion_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/salida_puerto_serie_implementacion_2.png)
 
 
 # 6 Implementacion 3
@@ -173,12 +203,27 @@ Interrupciones:
 
 ![grafico_implementacion3.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion3.png)
 
-Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
+Se puede observar que la tarea 1 (prioridad 1) toma el mutex usa led 1 para mostrar una secuencia de encendido y apagados, luego entrega el mutex y se bloquea un tiempo determinado.Luego toma el control del cpu la tarea 2(prioridad 1) la cual toma el mutex,realiza las mismas acciones con el led 2 y libera el mutex.Despues toma el control de la cpu la tarea 1(prioridad 1) la cual toma el mutex ,realiza las mismas acciones con el led 3 y libera el mutex para que la tarea 1 tome el control y se repite el ciclo.
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+El codigo main de la implemetacion se puede ver en la siguiente figura:
 
-El codigo de la implemetacion se puede ver en la siguiente figura:
+![main_implementacion3_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion3_1.png)
 
-![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
+![main_implementacion3_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/main_implementacion3_2.png)
+
+Las funciones y tareas utilizadas son las siguientes:
+
+![definicion_funciones_implementacion3_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion3_1.png)
+
+![definicion_funciones_implementacion2_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_2.png)
+
+![definicion_funciones_implementacion2_3.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_3.png)
+
+![definicion_funciones_implementacion2_4.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/definicion_funciones_implementacion2_4.png)
+
+
+En la implemetancion se generaron mensajes de salida por el usart los cuales dieron el siguiente resultado:
+
+![salida_puerto_serie_implementacion_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/salida_puerto_serie_implementacion_2.png)
 
 # 7 Hoja de ruta
