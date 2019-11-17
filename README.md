@@ -139,7 +139,7 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![salida_puerto_serie_implementacion_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/salida_puerto_serie_implementacion_1.png)
+![grafico_implementacion1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion1.png)
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
@@ -155,7 +155,7 @@ El codigo de la implemetacion se puede ver en la siguiente figura:
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+![grafico_implementacion2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion2.png)
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
@@ -171,7 +171,7 @@ El codigo de la implemetacion se puede ver en la siguiente figura:
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+![grafico_implementacion3.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/grafico_implementacion3.png)
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
