@@ -106,21 +106,6 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 
 ![observacion_tarea1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/observacion_tarea1.png)
 
-## Example 3 Experimenting with priorities
-
-## Example 4 Using the Blocked state to create delay
-
-## Example 5 Converting the example tasks to use vTaskDelayUntil
-
-## Example 6 Combining blocking and non-blocking tasks
-
-## Example 7 Defining an idle task hook function
-
-## Example 8 Changing task priorities
-
-## Example 9 Deleting tasks
-
-
 # 3 free rtos examples 10 a 16
 
 
@@ -148,23 +133,13 @@ Se puede observar que las tareas se interrumpen debido a que tienen el mismo niv
 
 ![tarea11.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/tarea11.png)
 
-## Example 12 Using a binary semaphore to synchronize a task with an interrupt 
-
-## Example 13 Using a counting semaphore to synchronize a task with an interrupt 
-
-## Example 14 Sending and receiving on a queue from within an interrupt 
-
-## Example 15 Re-writing vPrintString() to use a semaphore
-
-## Example 16 Re-writing vPrintString() to use a gatekeeper task
-
 
 # 4 Implementacion 1
 
 En la siguiente figura se puede ver el diagrama temporal de la distribución del tiempo de CPU entre tareas, Kernel,
 Interrupciones:
 
-![task1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/task1.png)
+![salida_puerto_serie_implementacion_1.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/esquemas/salida_puerto_serie_implementacion_1.png)
 
 Se puede observar que las tareas se interrumpen debido a que tienen el mismo nivel de prioridad.En la siguiente figura se puede ver como las tareas no llegan a terminar de imprimir el mensaje por el usart si el perido de interrupcion es demasiado corto( f=1000 Hz => T=1ms):
 
