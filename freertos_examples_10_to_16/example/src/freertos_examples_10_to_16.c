@@ -52,7 +52,8 @@
 
  //#define TEST (EXAMPLE_14)
 
-#define TEST IMPLEMENTACION_2
+#define TEST IMPLEMENTACION_3
+
 
 
 /*****************************************************************************
@@ -1281,7 +1282,6 @@ static void vTAREA2(void *pvParameters)
 
 static void vTAREA3(void *pvParameters)
 {
-
 	DEBUGOUT("TAREA 3\r\n");
 
 	long lReceivedValue;
@@ -1302,8 +1302,6 @@ static void vTAREA3(void *pvParameters)
 	}
 }
 
-
-
 static void vTAREA1(void *pvParameters)
 {
 	DEBUGOUT("TAREA 1\r\n");
@@ -1320,9 +1318,7 @@ static void vTAREA1(void *pvParameters)
 		vTaskDelayUntil(&xLastExecutionTime, 500 / portTICK_RATE_MS);
 
         mainTRIGGER_INTERRUPT();
-
     }
-
 }
 
 
@@ -1491,7 +1487,6 @@ static void vTAREA3(void *pvParameters)
 
 static void vTAREA2(void *pvParameters)
 {
-
 	DEBUGOUT("TAREA 2\r\n");
 
 	long lReceivedValue;
@@ -1500,7 +1495,6 @@ static void vTAREA2(void *pvParameters)
 	while (1) {
 
 		Board_LED_Set(LED3, LED_ON);
-
 		xStatus = xQueueReceive(xQueue, &lReceivedValue,portMAX_DELAY);
 
 		if (xStatus == pdPASS) {
@@ -1512,13 +1506,8 @@ static void vTAREA2(void *pvParameters)
 		DEBUGOUT("ENTREGA EL SEMAFORO \r\n");
 
 		xSemaphoreGive(xBinarySemaphore);
-
-
 	}
 }
-
-
-
 static void vTAREA1(void *pvParameters)
 {
 	DEBUGOUT("TAREA 1\r\n");
@@ -1535,7 +1524,6 @@ static void vTAREA1(void *pvParameters)
 		vTaskDelayUntil(&xLastExecutionTime, 500 / portTICK_RATE_MS);
 
         mainTRIGGER_INTERRUPT();
-
     }
 
 }
@@ -1635,8 +1623,195 @@ int main(void)
 }
 #endif
 
+#if (TEST == IMPLEMENTACION_3)		/* Using a binary semaphore to synchronize a task with an interrupt */
+
+const char *pcTextForMain = "\r\nIMPLEMENTACION 3 \r\n";
+
+/* The tasks to be created. */
+static void vTAREA2(void *pvParameters);
+static void vTAREA1(void *pvParameters);
+static void vTAREA3(void *pvParameters);
+
+/* Declare a variable of type xSemaphoreHandle.  This is used to reference the
+ * mutex type semaphore that is used to ensure mutual exclusive access to stdout. */
+xSemaphoreHandle xMutex;
+
+/* Take Semaphore, UART (or output) & LED toggle thread */
+static void vTAREA3(void *pvParameters)
+{
+
+	portTickType xLastExecutionTime;
+
+	/* Initialize the variable used by the call to vTaskDelayUntil(). */
+	xLastExecutionTime = xTaskGetTickCount();
+
+	while (1) {
 
 
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		{
+			DEBUGOUT("TAREA 3 TOMA EL MUTEX \r\n");
+
+			Board_LED_Set(LED3, LED_ON);
+
+			vTaskDelay(50);
+
+			Board_LED_Set(LED3, LED_OFF);
+
+			vTaskDelay(50);
+
+			Board_LED_Set(LED3, LED_ON);
+
+			vTaskDelay(50);
+
+			Board_LED_Set(LED3, LED_OFF);
+
+
+			DEBUGOUT("TAREA 3 ENTREGA EL MUTEX \r\n");
+		}
+		xSemaphoreGive(xMutex);
+
+		vTaskDelayUntil(&xLastExecutionTime, 1000 / portTICK_RATE_MS);
+
+
+	}
+}
+
+static void vTAREA2(void *pvParameters)
+{
+
+	portTickType xLastExecutionTime;
+
+	/* Initialize the variable used by the call to vTaskDelayUntil(). */
+
+	xLastExecutionTime = xTaskGetTickCount();
+
+	while (1) {
+
+
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		{
+			DEBUGOUT("TAREA 2 TOMA EL MUTEX \r\n");
+
+			Board_LED_Set(LED2, LED_ON);
+
+			vTaskDelay(500);
+
+			Board_LED_Set(LED2, LED_OFF);
+
+
+			DEBUGOUT("TAREA 2 ENTREGA EL MUTEX \r\n");
+		}
+		xSemaphoreGive(xMutex);
+
+		vTaskDelayUntil(&xLastExecutionTime, 1000 / portTICK_RATE_MS);
+
+
+	}
+}
+
+
+
+static void vTAREA1(void *pvParameters)
+{
+
+	portTickType xLastExecutionTime;
+
+	/* Initialize the variable used by the call to vTaskDelayUntil(). */
+	xLastExecutionTime = xTaskGetTickCount();
+
+	while (1) {
+
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		{
+			DEBUGOUT("TAREA 1 TOMA EL MUTEX \r\n");
+
+			Board_LED_Set(LED1, LED_ON);
+
+			vTaskDelay(200);
+
+			Board_LED_Set(LED1, LED_OFF);
+
+			vTaskDelay(200);
+
+			Board_LED_Set(LED1, LED_ON);
+
+			vTaskDelay(200);
+
+			Board_LED_Set(LED1, LED_OFF);
+
+
+			DEBUGOUT("TAREA 1 ENTREGA EL MUTEX \r\n");
+		}
+		xSemaphoreGive(xMutex);
+
+		vTaskDelayUntil(&xLastExecutionTime, 1000 / portTICK_RATE_MS);
+
+
+
+    }
+
+}
+
+
+/*****************************************************************************
+ * Public functions
+ ****************************************************************************/
+/**
+ * @brief	main routine for FreeRTOS example 12 - Using a binary semaphore to synchronize a task with an interrupt
+ * @return	Nothing, function should not exit
+ */
+int main(void)
+{
+	/* Sets up system hardware */
+	prvSetupHardware();
+
+	/* Print out the name of this example. */
+	DEBUGOUT(pcTextForMain);
+
+	 /* Before a semaphore is used it must be explicitly created.  In this example
+	     * a mutex type semaphore is created. */
+	xMutex = xSemaphoreCreateMutex();
+
+
+	 /* Only create the tasks if the semaphore was created successfully. */
+	 if (xMutex != NULL) {
+
+
+        /* Create the 'handler' task.  This is the task that will be synchronized
+         * with the interrupt.  The handler task is created with a high priority to
+         * ensure it runs immediately after the interrupt exits.  In this case a
+         * priority of 3 is chosen. */
+    	DEBUGOUT("CREA TAREA 2 \r\n");
+
+        xTaskCreate(vTAREA2, (char *) "TAREA2", configMINIMAL_STACK_SIZE, NULL,
+        			(tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);
+
+        DEBUGOUT("CREA TAREA 3 \r\n");
+
+        xTaskCreate(vTAREA3, (char *) "TAREA3", configMINIMAL_STACK_SIZE, NULL,
+                			(tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);
+
+        /* Create the task that will periodically generate a software interrupt.
+         * This is created with a priority below the handler task to ensure it will
+         * get preempted each time the handler task exits the Blocked state. */
+        DEBUGOUT("CREA TAREA 1 \r\n");
+        xTaskCreate(vTAREA1, (char *) "TAREA1", configMINIMAL_STACK_SIZE, NULL,
+        			(tskIDLE_PRIORITY + 1UL), (xTaskHandle *) NULL);
+
+        /* Start the scheduler so the created tasks start executing. */
+        vTaskStartScheduler();
+    }
+
+    /* If all is well we will never reach here as the scheduler will now be
+     * running the tasks.  If we do reach here then it is likely that there was
+     * insufficient heap memory available for a resource to be created. */
+	while (1);
+
+	/* Should never arrive here */
+    return ((int) NULL);
+}
+#endif
 
 
 /**

@@ -1,4 +1,4 @@
-20:02:52 **** Build of configuration Debug for project lpc_chip_43xx ****
+22:03:42 **** Build of configuration Debug for project lpc_chip_43xx ****
 make -r all 
 Building file: ../src/adc_18xx_43xx.c
 Invoking: MCU C Compiler
@@ -254,5 +254,5 @@ arm-none-eabi-size "liblpc_chip_43xx.a" ; # arm-none-eabi-objdump -h -S "liblpc_
     136	      0	      0	    136	     88	wwdt_18xx_43xx.o (ex liblpc_chip_43xx.a)
  
 
-20:03:03 Build Finished (took 11s.719ms)
+22:03:55 Build Finished (took 12s.218ms)
 
