@@ -221,3 +221,4 @@ En la implemetancion se generaron mensajes de salida por el usart los cuales die
 ![salida_puerto_serie_implementacion_2.png](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/salida_puerto_serie_implementacion_2.png)
 
 # 7 Hoja de ruta
+![HojaRutaTP3.jpg](https://raw.githubusercontent.com/cristianlabo/TP3/master/Imagenes/HojaRutaTP3.jpg)
